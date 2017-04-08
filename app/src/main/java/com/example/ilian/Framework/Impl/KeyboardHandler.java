@@ -92,6 +92,24 @@ public class KeyboardHandler implements OnKeyListener
      *              keyEvents = {KeyEvent2} keyEventBuffer = { } pool = {KeyEvent1}
      * UI Thread -> onKey(): another key arrives, pool holds KeyEvent1 here
      *              keyEvents = {KeyEvent2} keyEventBuffer = {KeyEvent1} pool = { }
+     *
+         1.	 We get a new event in the UI thread. There’s nothing in the Pool yet, so
+         a new KeyEvent instance (KeyEvent1) is created and inserted into the
+         keyEventsBuffer list.
+         2.	 We call getKeyEvents() on the main thread. getKeyEvents() takes
+         KeyEvent1 from the keyEventsBuffer list and puts it into the keyEvents
+         list that is returns to the caller.
+         3.	 We get another event on the UI thread. We still have nothing in the Pool,
+         so a new KeyEvent instance (KeyEvent2) is created and inserted into the
+         keyEventsBuffer list.
+         4.	 The main thread calls getKeyEvents() again. Now, something
+         interesting happens. Upon entry into the method, the keyEvents list
+         still holds KeyEvent1. The insertion loop will place that event into our
+         Pool. It then clears the keyEvents list and inserts any KeyEvent into the
+         keyEventsBuffer, in this case, KeyEvent2. We just recycled a key event.
+         5.	 Another key event arrives on the UI thread. This time, we have a free
+         KeyEvent in our Pool, which we happily reuse. Incredibly, there’s no
+         garbage collection!
      * @return the newly filled key buffer
      */
     public List<KeysEvent> getKeyEvents()
