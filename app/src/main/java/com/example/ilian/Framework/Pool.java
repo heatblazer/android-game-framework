@@ -12,6 +12,11 @@ package com.example.ilian.Framework;
 import java.util.List;
 import java.util.ArrayList;
 
+/**
+ * Instance pooling, prevent the continous garbage collection that clogs our
+ * realtime application.
+ * @param <T>
+ */
 public class Pool<T>
 {
     public interface PoolObjectFactory<T>
