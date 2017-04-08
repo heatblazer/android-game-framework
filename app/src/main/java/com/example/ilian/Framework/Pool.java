@@ -30,4 +30,29 @@ public class Pool<T>
         this.freeObjects = new ArrayList<T>(maxSize);
     }
 
+    /**
+     *
+     * @return fetch us a new Object or give us an already pooled instance
+     */
+    public T newObject()
+    {
+        T obj = null;
+        if (freeObjects.isEmpty()) {
+            obj = factory.createObject();
+        } else {
+            obj = freeObjects.remove(freeObjects.size()-1);
+        }
+        return  obj;
+    }
+
+    /**
+     * @param obj - reinsert the object that we no longer use
+     */
+    public void free(T obj)
+    {
+        if (freeObjects.size() < maxSize) {
+            freeObjects.add(obj);
+        }
+    }
+
 }
