@@ -24,9 +24,9 @@ public interface Input
         public static final int TOUCH_UP = 1;
         public static final int DRAGGED = 2;
 
-        int type;
-        int x, y;
-        int pointer;
+        public int type;
+        public  int x, y;
+        public int pointer;
     }
 
     public boolean isKeyPressed(int keyCode);
