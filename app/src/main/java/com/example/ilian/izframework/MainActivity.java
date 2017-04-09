@@ -16,5 +16,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // FOREVER
+        // update game tick
+        // update input
+        // update gamelogic
+        // update renderer
+        // do other stuff
     }
 }
