@@ -25,3 +25,33 @@ public class MainActivity extends AppCompatActivity {
         // do other stuff
     }
 }
+
+
+/* note: to oneself - a small refresher on java ( have not been there sicne 2012...
+ * how to fix a callback before java 1.8`s lambdas
+    public class HelloWorld
+    {
+        public HelloWorld() {}
+
+        public interface Cb
+        {
+            public void print();
+        }
+
+        public void callMe(Cb c)
+        {
+            c.print();
+        }
+        // arguments are passed using the text field below this editor
+        public static void main(String[] args)
+        {
+            HelloWorld hw = new HelloWorld();
+            hw.callMe(new Cb() {
+                public void print()
+                {
+                    System.out.println("CB...AAAAAAAA");
+                }
+            });
+        }
+    }
+*/
