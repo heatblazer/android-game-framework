@@ -21,6 +21,6 @@ public interface GameFramework
 
     public Screen getCurrentScreen();
 
-    public Screen getMainScreen();
+    public Screen getStartScreen();
 }
 
