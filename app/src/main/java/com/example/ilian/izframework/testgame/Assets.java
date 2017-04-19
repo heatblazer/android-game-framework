@@ -11,6 +11,7 @@ import com.example.ilian.Framework.Impl.AndroidAudio;
 import com.example.ilian.Framework.Impl.AndroidGraphics;
 import com.example.ilian.Framework.Pixmap;
 import com.example.ilian.Framework.Audio;
+import com.example.ilian.Framework.Voice;
 
 /**
  * Singleton class for the assets ...
@@ -32,7 +33,7 @@ public class Assets
         public static final int PAUSE = 3;
     }
     static Pixmap[] graphics = new Pixmap[Images.PLAYER];
-    static Audio[] sounds = new AndroidAudio[Sounds.PAUSE];
+    static Voice[] sounds = new Voice[Sounds.PAUSE];
 
     private Assets()
     {
@@ -53,12 +54,12 @@ public class Assets
         return  graphics[res];
     }
 
-    public Audio getAudioResource(int res)
+    public Voice getAudioResource(int res)
     {
         if (res < 0 || res >= Images.PLAYER) {
             return  null;
         }
         return  sounds[res];
     }
-    
+
 }
