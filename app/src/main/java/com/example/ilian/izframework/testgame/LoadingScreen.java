@@ -68,6 +68,7 @@ public class LoadingScreen extends Screen
 
 
     public LoadingScreen(GameFramework game)
+
     {
         super(game);
     }
@@ -91,7 +92,11 @@ public class LoadingScreen extends Screen
     }
 
     @Override
-    public void present(float dTime) {
+    public void present(float dTime)
+    {
+        Graphics g = game.getGraphics();
+        g.drawPixmap(Assets.Instance().getGraphicsResource(Assets.Images.LOGO), 0, 0);
+
 
     }
 

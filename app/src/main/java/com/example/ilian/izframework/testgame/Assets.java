@@ -32,8 +32,8 @@ public class Assets
         public static final int STOP = 2;
         public static final int PAUSE = 3;
     }
-    static Pixmap[] graphics = new Pixmap[Images.PLAYER];
-    static Voice[] sounds = new Voice[Sounds.PAUSE];
+    public static Pixmap[] graphics = new Pixmap[Images.PLAYER];
+    public static Voice[] sounds = new Voice[Sounds.PAUSE];
 
     private Assets()
     {
